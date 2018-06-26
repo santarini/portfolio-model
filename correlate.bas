@@ -1,4 +1,4 @@
-Function MonthCorrelate()
+Sub MonthCorrelate()
 
 Dim baseData, corrData, topCell As Range
 Dim countx, county As Integer
@@ -179,5 +179,4 @@ Next
 Range("A2").Select
 
 
-End Function
-
+End Sub
