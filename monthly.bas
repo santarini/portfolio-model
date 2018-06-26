@@ -1,11 +1,22 @@
 Sub makeMonths()
 Dim CurrentSheet As Worksheet
 Dim SheetName As String
+
+Sheets.Add.Name = "MonthSummary"
+
 For Each CurrentSheet In Worksheets
     If InStr(1, CurrentSheet.Name, "(D)") > 0 Then
         CurrentSheet.Activate
         SheetName = Split(CurrentSheet.Name, "(")(0)
         Call monthlyData(SheetName)
+        CurrentSheet.Activate
+    End If
+Next
+For Each CurrentSheet In Worksheets
+    If InStr(1, CurrentSheet.Name, "(Mon)") > 0 Then
+        CurrentSheet.Activate
+        SheetName = Split(CurrentSheet.Name, "(")(0)
+        Call monthlySummary(SheetName)
         CurrentSheet.Activate
     End If
 Next
@@ -127,17 +138,19 @@ Next
     Selection.Style = "Percent"
     Selection.NumberFormat = "0.000%"
     
+'populate month summary
+'Call PopulateMonthSummary()
+    
 're-center A1
     Range("A1").Select
     
 
 End Function
-Function monthlySummary(SheetName As String)
+Sub monthlySummary(SheetName As String)
 
     Dim useableData As Range
     Dim MonthlyArithmeticMean, MonthlyStandardDeviation, MonthlyVariance As Double
-    
-    
+
 'find "Sum of Intraday"
 
     Cells.Find(What:="Sum of Intraday", After:=ActiveCell, LookIn:=xlFormulas _
@@ -172,4 +185,9 @@ Function monthlySummary(SheetName As String)
     ActiveCell.Offset(2, 0).Value = MonthlyStandardDeviation
     ActiveCell.Offset(3, 0).Value = MonthlyVariance
 
-End Function
+End Sub
+Sub PopulateMonthSummary()
+
+
+
+End Sub
