@@ -1,4 +1,4 @@
-Function CapitalAllocationLine()
+Sub CapitalAllocationLine()
 
 Range("A1").Select
 Selection.End(xlDown).Select
@@ -48,8 +48,4 @@ Range("L1").Value = "Portfolio StDev"
     ActiveChart.ChartArea.Select
 
 Range("A1").Select
-
-
-
-End Function
-
+End Sub
