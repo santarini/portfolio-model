@@ -1,4 +1,4 @@
-Function createPortfolio()
+Sub createPortfolio()
 
 Dim MainRng As Range
 Dim AssetA, AssetB As Range
@@ -164,5 +164,4 @@ Selection.Rows.AutoFit
 
 Range("A1").Select
     
-End Function
-
+End Sub
