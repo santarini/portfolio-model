@@ -106,20 +106,8 @@ For FileNumber = 1 To Count 'you can change count to a constant for sample runs
     
 Next FileNumber
 
-For Each CurrentSheet In Worksheets
-    If InStr(1, CurrentSheet.Name, "(Mon)") > 0 Then
-        CurrentSheet.Activate
-        SheetName = Split(CurrentSheet.Name, "(")(0)
-        'Call monthlySummary(SheetName)
-        CurrentSheet.Activate
-    End If
-    'If InStr(1, CurrentSheet.Name, "(D)") > 0 Then
-    '    CurrentSheet.Activate
-    '    SheetName = CurrentSheet.Name
-    '    Call dailySummary(SheetName)
-    '    CurrentSheet.Activate
-    'End If
-Next
+Worksheets("PathSet").Delete
+Sheets(2).Select
                                         
 'tell me how long it took
 SecondsElapsed = Round(Timer - StartTime, 2)
@@ -722,7 +710,7 @@ Function manipulateDataIEX()
     Selection.NumberFormat = "0.000%"
     
     'resize one last time
-    Range("A:I").Select
+    Range("A:O").Select
     Selection.Columns.AutoFit
     
     'set active cell to home
@@ -1176,6 +1164,9 @@ Function populateSummary(SummaryRng As Range)
     OtoCKurtosisPercent = Application.WorksheetFunction.Kurt(Rng)
     OtoCSkewnessPercent = Application.WorksheetFunction.Skew_p(Rng)
 
+    'reset selection
+    Range("A1").Select
+    
     
     'paste Intraday Open to Close percent stats
     Worksheets("Summary").Activate
