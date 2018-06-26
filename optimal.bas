@@ -1,4 +1,4 @@
-Function optimalPortfolio()
+Sub optimalPortfolio()
 
 Dim riskFreeRate As Double
 Dim OptimalRng As Range
@@ -64,4 +64,4 @@ End With
 
 Range("A1").Select
 
-End Function
+End Sub
